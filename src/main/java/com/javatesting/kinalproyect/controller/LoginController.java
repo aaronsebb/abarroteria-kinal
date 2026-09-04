@@ -19,7 +19,8 @@ public class LoginController implements Initializable {
 
     private final AuthService authService;
     private final SceneManager sceneManager;
-
+    private String commitChange;
+    
     public LoginController(AuthService authService, SceneManager sceneManager) {
         this.authService = authService;
         this.sceneManager = sceneManager;
