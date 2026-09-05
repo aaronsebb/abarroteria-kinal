@@ -9,5 +9,7 @@ package main.java.com.javatesting.kinalproyect.model;
  * @author informatica
  */
 public class Usuario {
+    public String nombre;
+    
     
 }
