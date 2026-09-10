@@ -1,1 +1,1 @@
-<img width="399" height="501" alt="images" src="https://github.com/user-attachments/assets/c9937f84-decc-41af-896b-ae7d06a96683" />
+<img width="960" height="960" alt="perfect-fried-eggs" src="https://github.com/user-attachments/assets/68ee33fa-3735-46df-bf1b-53ab52b832fe" />
