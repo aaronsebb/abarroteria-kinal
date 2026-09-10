@@ -2,6 +2,7 @@
 /build/
 /dist/
 /nbproject/private/
+/lib/
 
 #clases autogeneradas
 *.class
