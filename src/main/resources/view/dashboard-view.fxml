@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane prefHeight="700.0" prefWidth="1200.0" styleClass="dashboard-root" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.javatesting.kinalproyect.controller.DashboardController">
+
+    <stylesheets>
+        <URL value="@../css/dashboard.css" />
+    </stylesheets>
+
+    <!-- ===================== SIDEBAR ===================== -->
+    <left>
+        <VBox prefWidth="240.0" spacing="8.0" styleClass="sidebar">
+            <padding>
+                <Insets bottom="20" left="15" right="15" top="20" />
+            </padding>
+
+            <!-- Logo / Título -->
+            <VBox alignment="CENTER_LEFT" spacing="4.0" styleClass="sidebar-header">
+                <Label styleClass="sidebar-title" text="Abarroteria kinal" />
+            </VBox>
+
+            <Separator styleClass="sidebar-separator" />
+
+            <!-- Menú de navegación -->
+            <VBox spacing="6.0" styleClass="menu-container" VBox.vgrow="ALWAYS">
+                
+                <Button alignment="BASELINE_LEFT" maxWidth="Infinity" styleClass="menu-btn, menu-btn-active" text="  Inicio" />
+                <Button alignment="BASELINE_LEFT" maxWidth="Infinity" styleClass="menu-btn" text="  Productos" />
+                <Button alignment="BASELINE_LEFT" maxWidth="Infinity" styleClass="menu-btn" text="  Categorías" />
+                <Button alignment="BASELINE_LEFT" maxWidth="Infinity" styleClass="menu-btn" text="  Ventas" />
+                <Button alignment="BASELINE_LEFT" maxWidth="Infinity" styleClass="menu-btn" text="  Clientes" />
+                <Button alignment="BASELINE_LEFT" maxWidth="Infinity" styleClass="menu-btn" text="  Proveedores" />
+                <Button alignment="BASELINE_LEFT" maxWidth="Infinity" styleClass="menu-btn" text="  Inventario" />
+                <Button alignment="BASELINE_LEFT" maxWidth="Infinity" styleClass="menu-btn" text="  Reportes" />
+
+            </VBox>
+
+            <!-- Botón Cerrar Sesión -->
+            <Button alignment="BASELINE_LEFT" maxWidth="Infinity" styleClass="menu-btn, logout-btn" text="  Cerrar Sesión" />
+        </VBox>
+    </left>
+
+    <!-- ===================== CENTRO ===================== -->
+    <center>
+        <BorderPane styleClass="main-content">
+
+            <!-- Header superior -->
+            <top>
+                <HBox alignment="CENTER_LEFT" prefHeight="70.0" spacing="15.0" styleClass="header">
+                    <padding>
+                        <Insets bottom="0" left="25" right="25" top="0" />
+                    </padding>
+
+                    <Region HBox.hgrow="ALWAYS" />
+
+                    <Label styleClass="header-user-label" text="Bienvenido," />
+                    <Label fx:id="lblUsuario" styleClass="header-username" text="Usuario" />
+                </HBox>
+            </top>
+
+            <!-- Contenido principal -->
+            <center>
+                <StackPane fx:id="contentArea" styleClass="content-area">
+                    <padding>
+                        <Insets bottom="25" left="25" right="25" top="25" />
+                    </padding>
+
+                    <!-- Aquí se cargarán las diferentes vistas -->
+                    <VBox alignment="TOP_CENTER" spacing="20.0">
+                        
+                        <!-- Tarjetas de resumen -->
+                        <HBox alignment="CENTER" spacing="20.0">
+                            <VBox alignment="CENTER" prefHeight="120" prefWidth="220" spacing="8.0" styleClass="card">
+                                <Label styleClass="card-title" text="Productos" />
+                                <Label fx:id="lblTotalProductos" styleClass="card-value" text="0" />
+                            </VBox>
+
+                            <VBox alignment="CENTER" prefHeight="120" prefWidth="220" spacing="8.0" styleClass="card">
+                                <Label styleClass="card-title" text="Ventas Hoy" />
+                                <Label fx:id="lblVentasHoy" styleClass="card-value" text="Q 0.00" />
+                            </VBox>
+
+                            <VBox alignment="CENTER" prefHeight="120" prefWidth="220" spacing="8.0" styleClass="card">
+                                <Label styleClass="card-title" text="Clientes" />
+                                <Label fx:id="lblTotalClientes" styleClass="card-value" text="0" />
+                            </VBox>
+
+                            <VBox alignment="CENTER" prefHeight="120" prefWidth="220" spacing="8.0" styleClass="card">
+                                <Label styleClass="card-title" text="Stock Bajo" />
+                                <Label fx:id="lblStockBajo" styleClass="card-value card-warning" text="0" />
+                            </VBox>
+                        </HBox>
+
+                        <!-- Mensaje de bienvenida -->
+                        <VBox alignment="CENTER" prefHeight="200" spacing="10.0" styleClass="welcome-card">
+                            <Label styleClass="welcome-title" text="¡Bienvenido al sistema de Abarrotería!" />
+                            <Label styleClass="welcome-subtitle" text="Selecciona una opción del menú para comenzar." />
+                        </VBox>
+
+                    </VBox>
+                </StackPane>
+            </center>
+        </BorderPane>
+    </center>
+
+</BorderPane>
