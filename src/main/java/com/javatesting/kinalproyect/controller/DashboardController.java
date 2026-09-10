@@ -10,9 +10,18 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.layout.StackPane;
+import main.java.com.javatesting.kinalproyect.service.AuthService;
+import main.java.com.javatesting.kinalproyect.util.SceneManager;
 
 public class DashboardController implements Initializable {
 
+    private final AuthService authService;
+    private final SceneManager sceneManager;
+    
+        public DashboardController(AuthService authService, SceneManager sceneManager) {
+        this.authService = authService;
+        this.sceneManager = sceneManager;
+    }
     @FXML
     private Label lblUsuario;
 
@@ -30,6 +39,7 @@ public class DashboardController implements Initializable {
 
     @FXML
     private StackPane contentArea;
+
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
