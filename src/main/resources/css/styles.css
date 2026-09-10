@@ -1,9 +1,101 @@
-/*
-Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
-Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to edit this template
-*/
-/* 
-    Created on : 4/09/2026, 14:22:27
-    Author     : informatica
-*/
+.root {
+    -fx-font-family: "Segoe UI", "Arial", sans-serif;
+}
 
+.background-pane {
+    -fx-background-image: url("../imagenes/login-bg.png");
+    -fx-background-size: cover;
+    -fx-background-position: center center;
+    -fx-background-repeat: no-repeat;
+}
+
+.login-card {
+    -fx-background-color: white;
+    -fx-background-radius: 20;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.12), 25, 0, 0, 8);
+    -fx-padding: 40 45 40 45;
+}
+
+.app-title {
+    -fx-font-size: 28px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #1e3a8a; /* Azul oscuro de confianza */
+}
+
+.subtitle {
+    -fx-font-size: 14px;
+    -fx-text-fill: #64748b;
+}
+
+.field-label {
+    -fx-font-size: 13px;
+    -fx-font-weight: 600;
+    -fx-text-fill: #334155;
+}
+
+
+.input-field {
+    -fx-background-color: #f8fafc;
+    -fx-background-radius: 10;
+    -fx-border-color: #e2e8f0;
+    -fx-border-radius: 10;
+    -fx-border-width: 1.5;
+    -fx-padding: 12 16;
+    -fx-font-size: 14px;
+    -fx-pref-height: 44;
+}
+
+.input-field:focused {
+    -fx-border-color: #3b82f6;
+    -fx-background-color: white;
+    -fx-effect: dropshadow(gaussian, rgba(59, 130, 246, 0.25), 8, 0, 0, 0);
+}
+
+.btn-primary {
+    -fx-background-color: linear-gradient(to right, #2563eb, #3b82f6);
+    -fx-text-fill: white;
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 10;
+    -fx-padding: 13 0;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(37, 99, 235, 0.35), 10, 0, 0, 4);
+}
+
+.btn-primary:hover {
+    -fx-background-color: linear-gradient(to right, #1d4ed8, #2563eb);
+    -fx-effect: dropshadow(gaussian, rgba(37, 99, 235, 0.45), 12, 0, 0, 5);
+}
+
+.btn-primary:pressed {
+    -fx-background-color: #1e40af;
+    -fx-effect: dropshadow(gaussian, rgba(37, 99, 235, 0.2), 6, 0, 0, 2);
+}
+
+.btn-link {
+    -fx-background-color: transparent;
+    -fx-text-fill: #2563eb;
+    -fx-font-size: 13px;
+    -fx-font-weight: 600;
+    -fx-cursor: hand;
+    -fx-padding: 0;
+    -fx-underline: false;
+}
+
+.btn-link:hover {
+    -fx-text-fill: #1d4ed8;
+    -fx-underline: true;
+}
+
+.helper-text {
+    -fx-font-size: 13px;
+    -fx-text-fill: #64748b;
+}
+
+.field-group {
+    -fx-pref-width: 290;
+}
+
+.button-group {
+    -fx-padding: 10 0 0 0;
+}
