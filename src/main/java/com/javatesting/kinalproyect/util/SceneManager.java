@@ -5,7 +5,7 @@
 package main.java.com.javatesting.kinalproyect.util;
 
 import main.java.com.javatesting.kinalproyect.controller.LoginController;
-import main.java.com.javatesting.kinalproyect.repository.AuthRepository;
+import main.java.com.javatesting.kinalproyect.repository.usuario.AuthRepository;
 import main.java.com.javatesting.kinalproyect.service.AuthService;
 import java.io.IOException;
 import javafx.fxml.FXMLLoader;

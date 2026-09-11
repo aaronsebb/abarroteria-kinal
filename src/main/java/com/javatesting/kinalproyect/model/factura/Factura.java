@@ -2,21 +2,21 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package main.java.com.javatesting.kinalproyect.model;
+package main.java.com.javatesting.kinalproyect.model.factura;
 import java.util.Date;
 
 /**
  *
  * @author informatica
  */
-public class Facturas {
+public class Factura {
    
     private String idFactura;
     private String idCliente;
     private double monto;
     private Date fecha;
 
-    public Facturas(String idFactura, String idCliente, double monto, Date fecha) {
+    public Factura(String idFactura, String idCliente, double monto, Date fecha) {
         this.idFactura = idFactura;
         this.idCliente = idCliente;
         this.monto = monto;

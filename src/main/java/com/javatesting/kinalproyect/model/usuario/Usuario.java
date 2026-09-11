@@ -1,8 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-package main.java.com.javatesting.kinalproyect.model;
+package main.java.com.javatesting.kinalproyect.model.usuario;
 
 /**
  *
@@ -15,9 +11,9 @@ public class Usuario {
     private String apellido;
     private String email;
     private String contrasena;
-    private String idRol;
+    private int idRol;
 
-    public Usuario(String idUsuario, String nombre, String apellido, String email, String contrasena, String idRol) {
+    public Usuario(String idUsuario, String nombre, String apellido, String email, String contrasena, int idRol) {
         this.idUsuario = idUsuario;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -66,11 +62,11 @@ public class Usuario {
         this.contrasena = contrasena;
     }
 
-    public String getIdRol() {
+    public int getIdRol() {
         return idRol;
     }
 
-    public void setIdRol(String idRol) {
+    public void setIdRol(int idRol) {
         this.idRol = idRol;
     }
 }

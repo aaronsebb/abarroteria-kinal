@@ -1,25 +1,24 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-package main.java.com.javatesting.kinalproyect.model;
+package main.java.com.javatesting.kinalproyect.model.producto;
 
-/**
- *
- * @author informatica
- */
+import java.math.BigDecimal;
+
 public class Producto {
-    
+
     private String idProducto;
     private String nombreProducto;
     private int stock;
     private double precio;
+    private String urlImagen;
 
-    public Producto(String idProducto, String nombreProducto, int stock, double precio) {
+    public Producto() {
+    }
+
+    public Producto(String idProducto, String nombreProducto, int stock, double precio, String urlImagen) {
         this.idProducto = idProducto;
         this.nombreProducto = nombreProducto;
         this.stock = stock;
         this.precio = precio;
+        this.urlImagen = urlImagen;
     }
 
     public String getIdProducto() {
@@ -53,5 +52,12 @@ public class Producto {
     public void setPrecio(double precio) {
         this.precio = precio;
     }
-    
+
+    public String getUrlImagen() {
+        return urlImagen;
+    }
+
+    public void setUrlImagen(String urlImagen) {
+        this.urlImagen = urlImagen;
+    }
 }
