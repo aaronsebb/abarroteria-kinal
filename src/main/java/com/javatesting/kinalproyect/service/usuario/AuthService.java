@@ -1,19 +1,13 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-package main.java.com.javatesting.kinalproyect.service;
+
+package main.java.com.javatesting.kinalproyect.service.usuario;
 
 import java.sql.SQLException;
 import javafx.collections.ObservableList;
 import main.java.com.javatesting.kinalproyect.exception.usuario.AuthException;
 import main.java.com.javatesting.kinalproyect.model.usuario.Usuario;
 import main.java.com.javatesting.kinalproyect.repository.usuario.AuthRepository;
+import main.java.dev.alpha.alphalogin.security.jbcrypt.BCrypt;
 
-/**
- *
- * @author informatica
- */
 public class AuthService {
 
     private final AuthRepository authRepository;
@@ -40,7 +34,7 @@ public class AuthService {
         if (usuario == null) {
             throw new AuthException("El usuario con email " + email + " no existe");
         }
-        if (!usuario.getContrasena().equals(contrasena)) {
+        if (!BCrypt.checkpw(contrasena, usuario.getContrasena())) {
             throw new AuthException("La contrasena ingresada es incorrecta");
         }
 
@@ -53,6 +47,9 @@ public class AuthService {
 
     public boolean save(Usuario usuario) {
         validarUsuario(usuario);
+
+        String hashedPassword = BCrypt.hashpw(usuario.getContrasena(),BCrypt.gensalt());
+        usuario.setContrasena(hashedPassword);
 
         boolean guardado = authRepository.save(usuario);
         if (!guardado) {
