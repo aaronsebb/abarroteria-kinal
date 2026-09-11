@@ -4,7 +4,7 @@
  */
 package main.java.com.javatesting.kinalproyect.controller;
 
-import main.java.com.javatesting.kinalproyect.service.AuthService;
+import main.java.com.javatesting.kinalproyect.service.usuario.AuthService;
 import main.java.com.javatesting.kinalproyect.util.SceneManager;
 import java.net.URL;
 import java.util.ResourceBundle;
