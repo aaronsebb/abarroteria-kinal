@@ -1,11 +1,12 @@
 package main.java.com.javatesting.kinalproyect.controller;
 
-import main.java.com.javatesting.kinalproyect.service.AuthService;
+
 import main.java.com.javatesting.kinalproyect.util.SceneManager;
 import main.java.com.javatesting.kinalproyect.model.usuario.Usuario;
 import main.java.com.javatesting.kinalproyect.exception.usuario.AuthException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
