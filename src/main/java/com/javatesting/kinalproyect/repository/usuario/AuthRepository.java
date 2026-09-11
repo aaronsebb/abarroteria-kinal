@@ -13,7 +13,7 @@ import main.java.com.javatesting.kinalproyect.repository.CRUDRepository;
 public class AuthRepository implements CRUDRepository<Usuario> {
 
     public static Usuario findUserByEmail(String email) throws SQLException {
-        String sql = "select * from usuarios where email = ?;";
+        String sql = "SELECT * FROM usuarios WHERE email = ?;";
 
         try (Connection conn = DBConnection.getConnection();
              PreparedStatement prst = conn.prepareStatement(sql)) {
@@ -27,7 +27,7 @@ public class AuthRepository implements CRUDRepository<Usuario> {
                             rs.getString("nombre"),
                             rs.getString("apellido"),
                             rs.getString("email"),
-                            rs.getString("contrasena_hash"),
+                            rs.getString("contrasena"),
                             rs.getInt("id_rol")
                     );
                 }
@@ -38,7 +38,7 @@ public class AuthRepository implements CRUDRepository<Usuario> {
 
     @Override
     public ObservableList<Usuario> findAll() {
-        String sql = "select * from usuarios;";
+        String sql = "SELECT * FROM usuarios;";
         ObservableList<Usuario> list = FXCollections.observableArrayList();
 
         try (Connection conn = DBConnection.getConnection();
@@ -51,7 +51,7 @@ public class AuthRepository implements CRUDRepository<Usuario> {
                         rs.getString("nombre"),
                         rs.getString("apellido"),
                         rs.getString("email"),
-                        rs.getString("contrasena_hash"),
+                        rs.getString("contrasena"),
                         rs.getInt("id_rol")
                 ));
             }
@@ -64,7 +64,7 @@ public class AuthRepository implements CRUDRepository<Usuario> {
 
     @Override
     public boolean save(Usuario usuario) {
-        String sql = "insert into usuarios (id_usuario, nombre, apellido, email, contrasena_hash, id_rol) values (?, ?, ?, ?, ?, ?);";
+        String sql = "INSERT INTO usuarios (id_usuario, nombre, apellido, email, contrasena, id_rol) VALUES (?, ?, ?, ?, ?, ?);";
 
         try (Connection conn = DBConnection.getConnection();
              PreparedStatement pstm = conn.prepareStatement(sql)) {
@@ -84,7 +84,7 @@ public class AuthRepository implements CRUDRepository<Usuario> {
 
     @Override
     public boolean deleteById(String idUsuario) {
-        String sql = "delete from usuarios where id_usuario = ?;";
+        String sql = "DELETE FROM usuarios WHERE id_usuario = ?;";
 
         try (Connection conn = DBConnection.getConnection();
              PreparedStatement pstm = conn.prepareStatement(sql)) {
@@ -99,7 +99,7 @@ public class AuthRepository implements CRUDRepository<Usuario> {
 
     @Override
     public boolean updateById(Usuario usuario) {
-        String sql = "update usuarios set nombre = ?, apellido = ?, email = ?, contrasena_hash = ?, id_rol = ? where id_usuario = ?;";
+        String sql = "UPDATE usuarios SET nombre = ?, apellido = ?, email = ?, contrasena = ?, id_rol = ? WHERE id_usuario = ?;";
 
         try (Connection conn = DBConnection.getConnection();
              PreparedStatement pstm = conn.prepareStatement(sql)) {

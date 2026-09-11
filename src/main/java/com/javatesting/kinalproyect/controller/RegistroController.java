@@ -1,7 +1,12 @@
-package com.javatesting.kinalproyect.controller;
+package main.java.com.javatesting.kinalproyect.controller;
 
+import main.java.com.javatesting.kinalproyect.service.AuthService;
+import main.java.com.javatesting.kinalproyect.util.SceneManager;
+import main.java.com.javatesting.kinalproyect.model.usuario.Usuario;
+import main.java.com.javatesting.kinalproyect.exception.usuario.AuthException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.UUID;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -12,6 +17,9 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 
 public class RegistroController implements Initializable {
+
+    private final AuthService authService;
+    private final SceneManager sceneManager;
 
     @FXML
     private TextField txtNombre;
@@ -34,59 +42,69 @@ public class RegistroController implements Initializable {
     @FXML
     private Button btnIrLogin;
 
+    public RegistroController(AuthService authService, SceneManager sceneManager) {
+        this.authService = authService;
+        this.sceneManager = sceneManager;
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // Inicialización si es necesaria
     }
 
     @FXML
     private void onRegistrar(ActionEvent event) {
-        String nombre = txtNombre.getText().trim();
-        String apellido = txtApellido.getText().trim();
-        String email = txtEmail.getText().trim();
-        String password = txtPassword.getText();
-        String confirmPassword = txtConfirmPassword.getText();
+        String nombre = txtNombre.getText() != null ? txtNombre.getText().trim() : "";
+        String apellido = txtApellido.getText() != null ? txtApellido.getText().trim() : "";
+        String email = txtEmail.getText() != null ? txtEmail.getText().trim() : "";
+        String password = txtPassword.getText() != null ? txtPassword.getText() : "";
+        String confirmPassword = txtConfirmPassword.getText() != null ? txtConfirmPassword.getText() : "";
 
-        // Validaciones
         if (nombre.isEmpty() || apellido.isEmpty() || email.isEmpty() || password.isEmpty()) {
-            mostrarAlerta("Error", "Todos los campos son obligatorios");
+            mostrarAlerta(AlertType.ERROR, "Error", "Todos los campos son obligatorios");
             return;
         }
 
         if (!password.equals(confirmPassword)) {
-            mostrarAlerta("Error", "Las contraseñas no coinciden");
+            mostrarAlerta(AlertType.ERROR, "Error", "Las contraseñas no coinciden");
             return;
         }
 
         if (password.length() < 6) {
-            mostrarAlerta("Error", "La contraseña debe tener al menos 6 caracteres");
+            mostrarAlerta(AlertType.ERROR, "Error", "La contraseña debe tener al menos 6 caracteres");
             return;
         }
 
-        // Aquí llamas a tu servicio para guardar en la base de datos
-        // Ejemplo:
-        // authService.registrar(nombre, apellido, email, password, 1); // id_rol = 1
+        try {
+            String idUsuario = UUID.randomUUID().toString().substring(0, 8);
+            Usuario nuevo = new Usuario(idUsuario, nombre, apellido, email, password, 1);
 
-        System.out.println("Registrando:");
-        System.out.println("Nombre: " + nombre);
-        System.out.println("Apellido: " + apellido);
-        System.out.println("Email: " + email);
-        System.out.println("Rol: 1");
+            authService.save(nuevo);
 
-        mostrarAlerta("Éxito", "Usuario registrado correctamente");
+            mostrarAlerta(AlertType.INFORMATION, "Éxito", "Usuario registrado correctamente");
+            sceneManager.showLoginView();
+        } catch (AuthException e) {
+            mostrarAlerta(AlertType.ERROR, "Error", e.getMessage());
+        } catch (Exception e) {
+            mostrarAlerta(AlertType.ERROR, "Error", "No se pudo registrar: " + e.getMessage());
+            e.printStackTrace();
+        }
     }
 
     @FXML
     private void onIrLogin(ActionEvent event) {
-        // Aquí llamas al SceneManager para volver al login
-        // sceneManager.showLoginView();
+        try {
+            sceneManager.showLoginView();
+        } catch (Exception e) {
+            mostrarAlerta(AlertType.ERROR, "Error", "No se pudo volver al login");
+            e.printStackTrace();
+        }
     }
 
-    private void mostrarAlerta(String titulo, String mensaje) {
-        Alert alert = new Alert(AlertType.INFORMATION);
+    private void mostrarAlerta(AlertType tipo, String titulo, String mensaje) {
+        Alert alert = new Alert(tipo);
         alert.setTitle(titulo);
         alert.setHeaderText(null);
         alert.setContentText(mensaje);
         alert.showAndWait();
     }
-}
+}   
