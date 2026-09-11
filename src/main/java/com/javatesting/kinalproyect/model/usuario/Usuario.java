@@ -1,9 +1,6 @@
 package main.java.com.javatesting.kinalproyect.model.usuario;
 
-/**
- *
- * @author informatica
- */
+
 public class Usuario {
     
     private String idUsuario;

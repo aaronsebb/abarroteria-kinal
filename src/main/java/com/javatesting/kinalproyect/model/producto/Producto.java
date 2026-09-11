@@ -1,11 +1,10 @@
 package main.java.com.javatesting.kinalproyect.model.producto;
 
-import java.math.BigDecimal;
-
 public class Producto {
 
     private String idProducto;
     private String nombreProducto;
+    private String idCategoria;
     private int stock;
     private double precio;
     private String urlImagen;
@@ -13,9 +12,10 @@ public class Producto {
     public Producto() {
     }
 
-    public Producto(String idProducto, String nombreProducto, int stock, double precio, String urlImagen) {
+    public Producto(String idProducto, String nombreProducto, String idCategoria, int stock, double precio, String urlImagen) {
         this.idProducto = idProducto;
         this.nombreProducto = nombreProducto;
+        this.idCategoria = idCategoria;
         this.stock = stock;
         this.precio = precio;
         this.urlImagen = urlImagen;
@@ -35,6 +35,14 @@ public class Producto {
 
     public void setNombreProducto(String nombreProducto) {
         this.nombreProducto = nombreProducto;
+    }
+
+    public String getIdCategoria() {
+        return idCategoria;
+    }
+
+    public void setIdCategoria(String idCategoria) {
+        this.idCategoria = idCategoria;
     }
 
     public int getStock() {
