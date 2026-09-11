@@ -1,20 +1,19 @@
 package main.java.com.javatesting.kinalproyect.controller;
 
-
-import main.java.com.javatesting.kinalproyect.util.SceneManager;
-import main.java.com.javatesting.kinalproyect.model.usuario.Usuario;
-import main.java.com.javatesting.kinalproyect.exception.usuario.AuthException;
 import java.net.URL;
 import java.util.ResourceBundle;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
-import javafx.scene.control.PasswordField;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Button;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
+import main.java.com.javatesting.kinalproyect.exception.usuario.AuthException;
+import main.java.com.javatesting.kinalproyect.model.usuario.Usuario;
 import main.java.com.javatesting.kinalproyect.service.usuario.AuthService;
+import main.java.com.javatesting.kinalproyect.util.SceneManager;
+
 public class LoginController implements Initializable {
 
     private final AuthService authService;
@@ -42,7 +41,7 @@ public class LoginController implements Initializable {
     }
 
     @FXML
-    private void handleLogin(ActionEvent event) {
+    private void handleLogin() {
         String email = txtFieldEmail.getText() != null ? txtFieldEmail.getText().trim() : "";
         String contrasena = txtFieldPass.getText() != null ? txtFieldPass.getText() : "";
 
@@ -57,19 +56,17 @@ public class LoginController implements Initializable {
             sceneManager.showDashboardView();
         } catch (AuthException e) {
             mostrarAlerta(AlertType.ERROR, "Error de autenticación", e.getMessage());
-        } catch (Exception e) {
-            mostrarAlerta(AlertType.ERROR, "Error", "Ocurrió un error inesperado: " + e.getMessage());
-            e.printStackTrace();
+        } catch (Exception ex) {
+            mostrarAlerta(AlertType.ERROR, "Error", "Ocurrió un error inesperado: " + ex.getMessage());
         }
     }
 
     @FXML
-    private void handleIrRegistro(ActionEvent event) {
+    private void handleIrRegistro() {
         try {
             sceneManager.showRegistroView();
         } catch (Exception e) {
-            mostrarAlerta(AlertType.ERROR, "Error", "No se pudo abrir el registro");
-            e.printStackTrace();
+            mostrarAlerta(AlertType.ERROR, "Error", "No se pudo abrir el registro: " + e.getMessage());
         }
     }
 

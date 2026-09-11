@@ -45,7 +45,8 @@ public class AuthService {
         return authRepository.findAll();
     }
 
-    public boolean save(Usuario usuario) {
+    public boolean save(String id, String nombre, String apellido, String email, String password, int idRol) {
+        Usuario usuario = new Usuario(id, nombre, apellido, email, password, idRol);
         validarUsuario(usuario);
 
         String hashedPassword = BCrypt.hashpw(usuario.getContrasena(),BCrypt.gensalt());

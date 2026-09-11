@@ -1,17 +1,13 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package main.java.com.javatesting.kinalproyect.util;
 
-import main.java.com.javatesting.kinalproyect.controller.LoginController;
-import main.java.com.javatesting.kinalproyect.controller.RegistroController;
-import main.java.com.javatesting.kinalproyect.repository.usuario.AuthRepository;
 import java.io.IOException;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import main.java.com.javatesting.kinalproyect.controller.LoginController;
+import main.java.com.javatesting.kinalproyect.controller.RegistroController;
+import main.java.com.javatesting.kinalproyect.repository.usuario.AuthRepository;
 import main.java.com.javatesting.kinalproyect.service.usuario.AuthService;
 
 public class SceneManager {
@@ -33,8 +29,8 @@ public class SceneManager {
             }
             try {
                 return clazz.getDeclaredConstructor().newInstance();
-            } catch (Exception e) {
-                throw new RuntimeException("Error al crear el controlador: " + e.getMessage());
+            } catch (Exception ex) {
+                throw new RuntimeException("Error al crear el controlador: " + ex.getMessage());
             }
         });
 
@@ -57,8 +53,8 @@ public class SceneManager {
             }
             try {
                 return clazz.getDeclaredConstructor().newInstance();
-            } catch (Exception e) {
-                throw new RuntimeException("Error al crear el controlador: " + e.getMessage());
+            } catch (Exception ex) {
+                throw new RuntimeException("Error al crear el controlador: " + ex.getMessage());
             }
         });
 

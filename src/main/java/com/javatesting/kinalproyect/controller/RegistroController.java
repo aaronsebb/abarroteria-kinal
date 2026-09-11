@@ -1,20 +1,20 @@
 package main.java.com.javatesting.kinalproyect.controller;
 
-import main.java.com.javatesting.kinalproyect.util.SceneManager;
-import main.java.com.javatesting.kinalproyect.model.usuario.Usuario;
-import main.java.com.javatesting.kinalproyect.exception.usuario.AuthException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.UUID;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
+import main.java.com.javatesting.kinalproyect.exception.usuario.AuthException;
 import main.java.com.javatesting.kinalproyect.service.usuario.AuthService;
+import main.java.com.javatesting.kinalproyect.util.SceneManager;
 
 public class RegistroController implements Initializable {
 
@@ -37,6 +37,9 @@ public class RegistroController implements Initializable {
     private PasswordField txtConfirmPassword;
 
     @FXML
+    private ComboBox cmbIdRol;
+    
+    @FXML
     private Button btnRegistrar;
 
     @FXML
@@ -52,12 +55,13 @@ public class RegistroController implements Initializable {
     }
 
     @FXML
-    private void onRegistrar(ActionEvent event) {
+    private void onRegistrar() {
         String nombre = txtNombre.getText() != null ? txtNombre.getText().trim() : "";
         String apellido = txtApellido.getText() != null ? txtApellido.getText().trim() : "";
         String email = txtEmail.getText() != null ? txtEmail.getText().trim() : "";
         String password = txtPassword.getText() != null ? txtPassword.getText() : "";
         String confirmPassword = txtConfirmPassword.getText() != null ? txtConfirmPassword.getText() : "";
+        int idRol = cmbIdRol.getVisibleRowCount(); // Arreglar
 
         if (nombre.isEmpty() || apellido.isEmpty() || email.isEmpty() || password.isEmpty()) {
             mostrarAlerta(AlertType.ERROR, "Error", "Todos los campos son obligatorios");
@@ -74,19 +78,15 @@ public class RegistroController implements Initializable {
             return;
         }
 
-        try {
-            String idUsuario = UUID.randomUUID().toString().substring(0, 8);
-            Usuario nuevo = new Usuario(idUsuario, nombre, apellido, email, password, 1);
-
-            authService.save(nuevo);
+        try {String idUsuario = UUID.randomUUID().toString().substring(0, 8);
+            authService.save(idUsuario, nombre, apellido, email, password, idRol);
 
             mostrarAlerta(AlertType.INFORMATION, "Éxito", "Usuario registrado correctamente");
             sceneManager.showLoginView();
-        } catch (AuthException e) {
-            mostrarAlerta(AlertType.ERROR, "Error", e.getMessage());
-        } catch (Exception e) {
-            mostrarAlerta(AlertType.ERROR, "Error", "No se pudo registrar: " + e.getMessage());
-            e.printStackTrace();
+        } catch (AuthException ex) {
+            mostrarAlerta(AlertType.ERROR, "Error", ex.getMessage());
+        } catch (Exception ex) {
+            mostrarAlerta(AlertType.ERROR, "Error", "No se pudo registrar: " + ex.getMessage());
         }
     }
 
@@ -94,9 +94,8 @@ public class RegistroController implements Initializable {
     private void onIrLogin(ActionEvent event) {
         try {
             sceneManager.showLoginView();
-        } catch (Exception e) {
-            mostrarAlerta(AlertType.ERROR, "Error", "No se pudo volver al login");
-            e.printStackTrace();
+        } catch (Exception ex) {
+            mostrarAlerta(AlertType.ERROR, "Error", "No se pudo volver al login: " + ex.getMessage());
         }
     }
 
@@ -107,4 +106,4 @@ public class RegistroController implements Initializable {
         alert.setContentText(mensaje);
         alert.showAndWait();
     }
-}   
+}
