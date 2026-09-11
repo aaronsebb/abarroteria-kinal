@@ -2,14 +2,14 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package main.java.com.javatesting.kinalproyect.model;
+package main.java.com.javatesting.kinalproyect.model.cliente;
 
 /**
  *
  * @author informatica
  *  
  */
-public class Direcciones {
+public class Direccion {
     private String idDireccion;
     private String ciudad;
     private String zona;
@@ -17,7 +17,7 @@ public class Direcciones {
     private String colonia;
     private String calle;
 
-    public Direcciones(String idDireccion, String ciudad, String zona, String noCasa, String colonia, String calle) {
+    public Direccion(String idDireccion, String ciudad, String zona, String noCasa, String colonia, String calle) {
         this.idDireccion = idDireccion;
         this.ciudad = ciudad;
         this.zona = zona;

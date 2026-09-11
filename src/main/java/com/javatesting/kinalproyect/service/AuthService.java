@@ -4,7 +4,7 @@
  */
 package main.java.com.javatesting.kinalproyect.service;
 
-import main.java.com.javatesting.kinalproyect.repository.AuthRepository;
+import main.java.com.javatesting.kinalproyect.repository.usuario.AuthRepository;
 
 /**
  *
