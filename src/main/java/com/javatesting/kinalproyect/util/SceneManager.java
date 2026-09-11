@@ -7,12 +7,12 @@ package main.java.com.javatesting.kinalproyect.util;
 import main.java.com.javatesting.kinalproyect.controller.LoginController;
 import main.java.com.javatesting.kinalproyect.controller.RegistroController;
 import main.java.com.javatesting.kinalproyect.repository.usuario.AuthRepository;
-import main.java.com.javatesting.kinalproyect.service.AuthService;
 import java.io.IOException;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import main.java.com.javatesting.kinalproyect.service.usuario.AuthService;
 
 public class SceneManager {
 
