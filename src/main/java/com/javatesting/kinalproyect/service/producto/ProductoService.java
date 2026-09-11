@@ -59,6 +59,9 @@ public class ProductoService {
         if (producto.getNombreProducto() == null || producto.getNombreProducto().isBlank()) {
             throw new ProductoException("El nombre del producto es obligatorio");
         }
+        if (producto.getIdCategoria() == null || producto.getIdCategoria().isBlank()) {
+            throw new ProductoException("El producto debe tener una categoria asignada");
+        }
         if (producto.getStock() < 0) {
             throw new ProductoException("El stock no puede ser negativo");
         }
