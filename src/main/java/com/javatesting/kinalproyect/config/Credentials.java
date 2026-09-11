@@ -1,18 +1,11 @@
 package main.java.com.javatesting.kinalproyect.config;
 
-/**
- *
- * @author informatica
- */
 public class Credentials {
     
-    public static final String URL_DB = System.getenv("varibleEntorno");
-    public static final String  USER_DB = System.getenv("varibleEntorno");
-    public static final String  PASS_DB = System.getenv("varibleEntorno");
-
-    private Credentials(){
-        
+    public static final String URL_DB = "jdbc:mysql://localhost:3306/abarroteria_kinal_in4bv";
+    public static final String USER_DB = "IN4BV";
+    public static final String PASS_DB = "%IndiVA4";
+    
+    private Credentials() {
     }
-    
-    
 }
