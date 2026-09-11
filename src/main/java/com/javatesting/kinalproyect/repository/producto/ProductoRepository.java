@@ -25,6 +25,7 @@ public class ProductoRepository implements CRUDRepository<Producto> {
                 list.add(new Producto(
                         rs.getString("id_producto"),
                         rs.getString("nombre_producto"),
+                        rs.getString("id_categoria"),
                         rs.getInt("stock"),
                         rs.getDouble("precio"),
                         rs.getString("url_imagen")
@@ -51,6 +52,7 @@ public class ProductoRepository implements CRUDRepository<Producto> {
                     list.add(new Producto(
                             rs.getString("id_producto"),
                             rs.getString("nombre_producto"),
+                            rs.getString("id_categoria"),
                             rs.getInt("stock"),
                             rs.getDouble("precio"),
                             rs.getString("url_imagen")
@@ -66,16 +68,17 @@ public class ProductoRepository implements CRUDRepository<Producto> {
 
     @Override
     public boolean save(Producto producto) {
-        String sql = "insert into productos (id_producto, nombre_producto, stock, precio, url_imagen) values (?, ?, ?, ?, ?);";
+        String sql = "insert into productos (id_producto, nombre_producto, id_categoria, stock, precio, url_imagen) values (?, ?, ?, ?, ?, ?);";
 
         try (Connection conn = DBConnection.getConnection();
              PreparedStatement pstm = conn.prepareStatement(sql)) {
 
             pstm.setString(1, producto.getIdProducto());
             pstm.setString(2, producto.getNombreProducto());
-            pstm.setInt(3, producto.getStock());
-            pstm.setDouble(4, producto.getPrecio());
-            pstm.setString(5, producto.getUrlImagen());
+            pstm.setString(3, producto.getIdCategoria());
+            pstm.setInt(4, producto.getStock());
+            pstm.setDouble(5, producto.getPrecio());
+            pstm.setString(6, producto.getUrlImagen());
 
             return pstm.executeUpdate() > 0;
         } catch (SQLException e) {
@@ -100,16 +103,17 @@ public class ProductoRepository implements CRUDRepository<Producto> {
 
     @Override
     public boolean updateById(Producto producto) {
-        String sql = "update productos set nombre_producto = ?, stock = ?, precio = ?, url_imagen = ? where id_producto = ?;";
+        String sql = "update productos set nombre_producto = ?, id_categoria = ?, stock = ?, precio = ?, url_imagen = ? where id_producto = ?;";
 
         try (Connection conn = DBConnection.getConnection();
              PreparedStatement pstm = conn.prepareStatement(sql)) {
 
             pstm.setString(1, producto.getNombreProducto());
-            pstm.setInt(2, producto.getStock());
-            pstm.setDouble(3, producto.getPrecio());
-            pstm.setString(4, producto.getUrlImagen());
-            pstm.setString(5, producto.getIdProducto());
+            pstm.setString(2, producto.getIdCategoria());
+            pstm.setInt(3, producto.getStock());
+            pstm.setDouble(4, producto.getPrecio());
+            pstm.setString(5, producto.getUrlImagen());
+            pstm.setString(6, producto.getIdProducto());
 
             return pstm.executeUpdate() > 0;
         } catch (SQLException e) {

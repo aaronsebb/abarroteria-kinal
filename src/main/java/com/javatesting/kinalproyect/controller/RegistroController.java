@@ -1,4 +1,4 @@
-package com.javatesting.kinalproyect.controller;
+package main.java.com.javatesting.kinalproyect.controller;
 
 import java.net.URL;
 import java.util.ResourceBundle;
