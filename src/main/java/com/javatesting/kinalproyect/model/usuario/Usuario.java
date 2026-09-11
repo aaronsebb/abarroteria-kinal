@@ -11,7 +11,7 @@ public class Usuario {
     private String apellido;
     private String email;
     private String contrasena;
-    private int idRol;
+    private int  idRol;
 
     public Usuario(String idUsuario, String nombre, String apellido, String email, String contrasena, int idRol) {
         this.idUsuario = idUsuario;
