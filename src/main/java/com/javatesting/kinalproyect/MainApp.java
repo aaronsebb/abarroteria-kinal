@@ -14,8 +14,6 @@ import javafx.stage.Stage;
  * @author informatica
  */
 public class MainApp extends Application {
-
-    private Stage stage;
     
     public static void main(String[] args) {
         // TODO code application logic here
@@ -26,7 +24,6 @@ public class MainApp extends Application {
     @Override
     public void start(Stage stage){
     
-    this.stage = stage;
     SceneManager sceneManager = new SceneManager(stage);
     try{
     sceneManager.showLoginView();

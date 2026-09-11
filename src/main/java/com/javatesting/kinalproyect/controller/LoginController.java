@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXMLController.java to edit this template
- */
 package main.java.com.javatesting.kinalproyect.controller;
 
 import main.java.com.javatesting.kinalproyect.service.usuario.AuthService;
@@ -14,11 +10,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
-/**
- * XDML Controller class
- *
- * @author informatica
- */
 public class LoginController implements Initializable {
 
     private final AuthService authService;
