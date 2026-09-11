@@ -14,6 +14,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import main.java.com.javatesting.kinalproyect.service.usuario.AuthService;
 public class LoginController implements Initializable {
 
     private final AuthService authService;
