@@ -59,14 +59,17 @@ public class SceneManager {
      // commit testing 
     
     }
+
     public void showDashboardView() throws IOException{
     
     FXMLLoader loader = new FXMLLoader(getClass().getResource("/main/resources/view/dashboard-view.fxml"));
     
     loader.setControllerFactory(
     clazz ->{
-    if(clazz == DashboardController.class){
-    return new DashboardController(this);
+    if(clazz == LoginController.class){
+    AuthRepository authRepository = new AuthRepository();
+    AuthService authService = new AuthService(authRepository);
+    return new LoginController(authService,this);
     }
     try{
     
@@ -84,16 +87,21 @@ public class SceneManager {
     Scene scene = new Scene(root,600,600);
     stage.setScene(scene);
     stage.centerOnScreen();
-    stage.show();
+    stage.show();  
     
     }
-    
+
     public void showRegistroView() throws IOException{
     
     FXMLLoader loader = new FXMLLoader(getClass().getResource("/main/resources/view/registro-view.fxml"));
     
     loader.setControllerFactory(
     clazz ->{
+    if(clazz == LoginController.class){
+    AuthRepository authRepository = new AuthRepository();
+    AuthService authService = new AuthService(authRepository);
+    return new LoginController(authService,this);
+    }
     try{
     
     return clazz.getDeclaredConstructor().newInstance();
@@ -111,8 +119,4 @@ public class SceneManager {
     stage.setScene(scene);
     stage.centerOnScreen();
     stage.show();
-    
-    }
-    
-    
-}
+
