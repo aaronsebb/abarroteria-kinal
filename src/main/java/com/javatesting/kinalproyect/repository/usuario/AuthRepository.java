@@ -27,7 +27,7 @@ public class AuthRepository implements CRUDRepository<Usuario> {
                             rs.getString("nombre"),
                             rs.getString("apellido"),
                             rs.getString("email"),
-                            rs.getString("contrasena"),
+                            rs.getString("contrasena_hash"),
                             rs.getInt("id_rol")
                     );
                 }

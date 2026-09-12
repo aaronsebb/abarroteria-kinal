@@ -36,72 +36,63 @@ public class SceneManager {
         mostrar(crearLoader("registro-view.fxml", controller).load(), 600, 600);
     }
 
-    public void showDashboardView(Usuario usuario) throws IOException {
-        if (usuario == null) {
-            showLoginView();
-            return;
-        }
-
-        boolean vistaEmpleado;
-
-        if (usuario.getIdRol() == 1) {
-            vistaEmpleado = false;
-        } else if (usuario.getIdRol() == 2) {
-            vistaEmpleado = true;
-        } else {
-            throw new IOException(
-                    "No hay una vista configurada para este rol.");
-        }
-
-        DashboardController controller =
-                new DashboardController(this, usuario);
-
-        FXMLLoader loader = crearLoader("dashboard-view.fxml", controller);
-        Parent root = loader.load();
-
-        controller.configurarVista(vistaEmpleado);
-        mostrar(root, 1200, 700);
+    public void showDashboardView() throws IOException{
+    
+    FXMLLoader loader = new FXMLLoader(getClass().getResource("/main/resources/view/dashboard-view.fxml"));
+    
+    loader.setControllerFactory(
+    clazz ->{
+    if(clazz == LoginController.class){
+    AuthRepository authRepository = new AuthRepository();
+    AuthService authService = new AuthService(authRepository);
+    return new LoginController(authService,this);
+    }
+    try{
+    
+    return clazz.getDeclaredConstructor().newInstance();
+    
+        
+    }catch(Exception e){
+    
+        throw new RuntimeException ("error al crear el constructor " + e.getMessage());
+        
+    }  
+    }         
+    );
+    Parent root = loader.load();
+    Scene scene = new Scene(root,600,600);
+    stage.setScene(scene);
+    stage.centerOnScreen();
+    stage.show();  
+    
     }
 
-    public void showProductoFormView(Usuario usuario) throws IOException {
-        ProductoFormController controller =
-                new ProductoFormController(this, usuario);
-
-        mostrar(crearLoader("producto-form-view.fxml", controller).load(),
-                900, 700);
+    public void showRegistroView() throws IOException{
+    
+    FXMLLoader loader = new FXMLLoader(getClass().getResource("/main/resources/view/registro-view.fxml"));
+    
+    loader.setControllerFactory(
+    clazz ->{
+    if(clazz == LoginController.class){
+    AuthRepository authRepository = new AuthRepository();
+    AuthService authService = new AuthService(authRepository);
+    return new LoginController(authService,this);
     }
+    try{
+    
+    return clazz.getDeclaredConstructor().newInstance();
+    
+        
+    }catch(Exception e){
+    
+        throw new RuntimeException ("error al crear el constructor " + e.getMessage());
+        
+    }  
+    }         
+    );
+    Parent root = loader.load();
+    Scene scene = new Scene(root,600,600);
+    stage.setScene(scene);
+    stage.centerOnScreen();
+    stage.show();
 
-    private FXMLLoader crearLoader(String archivo, Object controller)
-            throws IOException {
-
-        URL ruta = getClass().getResource(
-                "/main/resources/view/" + archivo);
-
-        if (ruta == null) {
-            throw new IOException("No se encontró la vista: " + archivo);
-        }
-
-        FXMLLoader loader = new FXMLLoader(ruta);
-
-        loader.setControllerFactory(tipo -> {
-            if (tipo == controller.getClass()) {
-                return controller;
-            }
-
-            try {
-                return tipo.getDeclaredConstructor().newInstance();
-            } catch (ReflectiveOperationException e) {
-                throw new RuntimeException(
-                        "No se pudo crear: " + tipo.getName(), e);
-            }
-        });
-
-        return loader;
-    }
-
-    private void mostrar(Parent root, int ancho, int alto) {
-        stage.setScene(new Scene(root, ancho, alto));
-        stage.centerOnScreen();
-        stage.show();
-    }
-}
