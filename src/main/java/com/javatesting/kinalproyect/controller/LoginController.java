@@ -1,6 +1,5 @@
 package main.java.com.javatesting.kinalproyect.controller;
 
-
 import main.java.com.javatesting.kinalproyect.util.SceneManager;
 import main.java.com.javatesting.kinalproyect.model.usuario.Usuario;
 import main.java.com.javatesting.kinalproyect.exception.usuario.AuthException;
