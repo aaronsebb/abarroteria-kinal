@@ -4,6 +4,7 @@ import javafx.collections.ObservableList;
 import main.java.com.javatesting.kinalproyect.exception.producto.ProductoException;
 import main.java.com.javatesting.kinalproyect.model.producto.Producto;
 import main.java.com.javatesting.kinalproyect.repository.producto.ProductoRepository;
+import main.java.com.javatesting.kinalproyect.model.usuario.Usuario;
 
 public class ProductoService {
 
@@ -20,28 +21,30 @@ public class ProductoService {
         return productoRepository.findProductsByCategory(idCategoria);
     }
 
-    public boolean save(Producto producto) {
-        validarProducto(producto);
-
-        boolean guardado = productoRepository.save(producto);
-        if (!guardado) {
-            throw new ProductoException("No se pudo guardar el producto");
-        }
-        return true;
+    public void validarPermisoCreacion(Usuario usuario) {
+    if (usuario == null) {
+        throw new ProductoException(
+                "Debes iniciar sesión para crear productos.");
     }
 
-    public boolean deleteById(String idProducto) {
-        if (idProducto == null || idProducto.isBlank()) {
-            throw new ProductoException("El id del producto es obligatorio");
-        }
+    if (usuario.getIdRol() != 2) {
+        throw new ProductoException(
+                "Solo los empleados pueden crear productos.");
+    }
+}
 
-        boolean eliminado = productoRepository.deleteById(idProducto);
-        if (!eliminado) {
-            throw new ProductoException("No se encontro el producto con id " + idProducto);
-        }
-        return true;
+public boolean save(Producto producto, Usuario usuario) {
+    validarPermisoCreacion(usuario);
+    validarProducto(producto);
+
+    boolean guardado = productoRepository.save(producto);
+
+    if (!guardado) {
+        throw new ProductoException("No se pudo guardar el producto");
     }
 
+    return true;
+}
     public boolean updateById(Producto producto) {
         validarProducto(producto);
 
@@ -68,5 +71,8 @@ public class ProductoService {
         if (producto.getPrecio() < 0) {
             throw new ProductoException("El precio no puede ser negativo");
         }
+        if (!Double.isFinite(producto.getPrecio()) || producto.getPrecio() < 0) {
+        throw new ProductoException("El precio debe ser un número válido mayor o igual a cero");
+}
     }
 }
