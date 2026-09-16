@@ -100,4 +100,7 @@ public class SceneManager {
     stage.show();
     }
 }
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
