@@ -1,7 +1,6 @@
 package main.java.com.javatesting.kinalproyect.controller;
 
 import main.java.com.javatesting.kinalproyect.util.SceneManager;
-import main.java.com.javatesting.kinalproyect.model.usuario.Usuario;
 import main.java.com.javatesting.kinalproyect.exception.usuario.AuthException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -76,9 +75,8 @@ public class RegistroController implements Initializable {
 
         try {
             String idUsuario = UUID.randomUUID().toString().substring(0, 8);
-            Usuario nuevo = new Usuario(idUsuario, nombre, apellido, email, password, 1);
 
-            authService.save(nuevo);
+            authService.save(idUsuario, nombre, apellido, email, password, 1);
 
             mostrarAlerta(AlertType.INFORMATION, "Éxito", "Usuario registrado correctamente");
             sceneManager.showLoginView();
