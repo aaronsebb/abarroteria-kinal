@@ -53,7 +53,7 @@ public class LoginController implements Initializable {
         try {
             Usuario usuario = authService.login(email, contrasena);
             mostrarAlerta(AlertType.INFORMATION, "Éxito", "Bienvenido " + usuario.getNombre());
-            sceneManager.showDashboardView();
+            sceneManager.showDashboardView(usuario);
         } catch (AuthException e) {
             mostrarAlerta(AlertType.ERROR, "Error de autenticación", e.getMessage());
         } catch (Exception e) {

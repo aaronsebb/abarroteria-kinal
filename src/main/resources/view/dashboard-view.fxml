@@ -30,19 +30,63 @@
             <Separator styleClass="sidebar-separator" />
 
             <VBox spacing="6.0" styleClass="menu-container" VBox.vgrow="ALWAYS">
-                
-                <Button alignment="BASELINE_LEFT" maxWidth="Infinity" styleClass="menu-btn, menu-btn-active" text="  Inicio" />
-                <Button alignment="BASELINE_LEFT" maxWidth="Infinity" styleClass="menu-btn" text="  Productos" />
-                <Button alignment="BASELINE_LEFT" maxWidth="Infinity" styleClass="menu-btn" text="  Categorías" />
-                <Button alignment="BASELINE_LEFT" maxWidth="Infinity" styleClass="menu-btn" text="  Ventas" />
-                <Button alignment="BASELINE_LEFT" maxWidth="Infinity" styleClass="menu-btn" text="  Clientes" />
-                <Button alignment="BASELINE_LEFT" maxWidth="Infinity" styleClass="menu-btn" text="  Proveedores" />
-                <Button alignment="BASELINE_LEFT" maxWidth="Infinity" styleClass="menu-btn" text="  Inventario" />
-                <Button alignment="BASELINE_LEFT" maxWidth="Infinity" styleClass="menu-btn" text="  Reportes" />
 
-            </VBox>
+    <Button alignment="BASELINE_LEFT"
+            maxWidth="Infinity"
+            styleClass="menu-btn, menu-btn-active"
+            text="  Inicio"
+            onAction="#onInicio" />
 
-           <Button alignment="BASELINE_LEFT" maxWidth="Infinity" styleClass="menu-btn, logout-btn" text="  Cerrar Sesión" />
+    <VBox fx:id="opcionesEmpleado"
+          spacing="6.0"
+          visible="false"
+          managed="false">
+
+        <Button alignment="BASELINE_LEFT"
+                maxWidth="Infinity"
+                styleClass="menu-btn"
+                text="  Crear producto"
+                onAction="#onProductos" />
+
+        <Button alignment="BASELINE_LEFT"
+                maxWidth="Infinity"
+                styleClass="menu-btn"
+                text="  Categorías" />
+
+        <Button alignment="BASELINE_LEFT"
+                maxWidth="Infinity"
+                styleClass="menu-btn"
+                text="  Ventas" />
+
+        <Button alignment="BASELINE_LEFT"
+                maxWidth="Infinity"
+                styleClass="menu-btn"
+                text="  Clientes" />
+
+        <Button alignment="BASELINE_LEFT"
+                maxWidth="Infinity"
+                styleClass="menu-btn"
+                text="  Proveedores" />
+
+        <Button alignment="BASELINE_LEFT"
+                maxWidth="Infinity"
+                styleClass="menu-btn"
+                text="  Inventario" />
+
+        <Button alignment="BASELINE_LEFT"
+                maxWidth="Infinity"
+                styleClass="menu-btn"
+                text="  Reportes" />
+
+        </VBox>
+        </VBox>
+
+        <Button fx:id="btnCerrarSesion"
+                alignment="BASELINE_LEFT"
+                maxWidth="Infinity"
+                styleClass="menu-btn, logout-btn"
+                text="  Cerrar Sesión"
+                onAction="#onCerrarSesion" />        
         </VBox>
     </left>
 

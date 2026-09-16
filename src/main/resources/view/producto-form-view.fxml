@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane id="AnchorPane" prefHeight="700.0" prefWidth="900.0" styleClass="main-pane" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.com.javatesting.kinalproyect.controller.ProductoFormController">
+
+    <stylesheets>
+        <URL value="@../css/styles.css" />
+    </stylesheets>
+
+    <children>
+        <StackPane styleClass="background-pane" AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.topAnchor="0">
+
+            <VBox alignment="CENTER" maxHeight="620" maxWidth="420" spacing="16.0" styleClass="login-card">
+
+                <VBox alignment="CENTER" spacing="8">
+                    <Label styleClass="app-title" text="Nuevo producto" />
+                    <Label styleClass="subtitle" text="Completa los datos del producto" />
+                </VBox>
+
+                <VBox spacing="6" styleClass="field-group">
+                    <Label styleClass="field-label" text="Nombre del producto" />
+                    <TextField fx:id="txtNombreProducto" promptText="Ej. Arroz 1kg" styleClass="input-field" />
+                </VBox>
+
+                <VBox spacing="6" styleClass="field-group">
+                    <Label styleClass="field-label" text="ID de categoría (temporal)" />
+                    <TextField fx:id="txtIdCategoria" promptText="Escribe el id_categoria" styleClass="input-field" />
+                </VBox>
+
+                <VBox spacing="6" styleClass="field-group">
+                    <Label styleClass="field-label" text="Stock" />
+                    <TextField fx:id="txtStock" promptText="Ej. 50" styleClass="input-field" />
+                </VBox>
+
+                <VBox spacing="6" styleClass="field-group">
+                    <Label styleClass="field-label" text="Precio" />
+                    <TextField fx:id="txtPrecio" promptText="Ej. 15.00" styleClass="input-field" />
+                </VBox>
+
+                <VBox spacing="6" styleClass="field-group">
+                    <Label styleClass="field-label" text="URL de imagen (opcional)" />
+                    <TextField fx:id="txtUrlImagen" promptText="https://..." styleClass="input-field" />
+                </VBox>
+
+                <VBox spacing="12" styleClass="button-group">
+                    <Button fx:id="btnGuardar" maxWidth="Infinity" mnemonicParsing="false" onAction="#onGuardar" styleClass="btn-primary" text="Guardar producto" />
+
+                    <HBox alignment="CENTER" spacing="6">
+                        <Button fx:id="btnCancelar" mnemonicParsing="false" onAction="#onCancelar" styleClass="btn-link" text="Cancelar" />
+                    </HBox>
+                </VBox>
+            </VBox>
+        </StackPane>
+    </children>
+</AnchorPane>
